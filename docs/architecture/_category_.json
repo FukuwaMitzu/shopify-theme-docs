@@ -1,8 +1,4 @@
 {
-  "label": "Kiến trúc",
-  "position": 2,
-  "link": {
-    "type": "generated-index",
-    "description": "Làm quen với kiến trúc của một Shopify theme."
-  }
+  "label": "Architecture",
+  "position": 3
 }

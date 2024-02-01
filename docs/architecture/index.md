@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: Architecture
 description: Tổng quan về kiến trúc Shopify theme
 ---
 
