@@ -52,8 +52,9 @@ This product's title contains the word Pack.
 This product has been tagged with "Hello".
 {% endif %}
 ```
-
+:::note
 `contains` chỉ có thể dùng với string. Bạn không thể dùng để kiểm tra sự xuất hiện của object trong một danh sách các object.
+:::
 
 ## Thứ tự các phép toán
 

@@ -36,8 +36,8 @@ Introduction
 ```
 
 Tags trong Liquid được chia ra làm 4 loại:
-+ Control flow
-+ Iteration
++ [Control flow](../Tags/Control-flow)
++ [Iteration](../Tags/Iteration)
 + Template
 + Variable assignment
 
@@ -45,7 +45,7 @@ Truy cập từng mục để hiểu thêm về cách sử dụng các loại ta
 
 ## Filters
 
-**Filters** thay đổi đầu ra của một giá trị hoặc một object. Chúng được sử dụng trong các khai báo nằm trong biểu thức có kí hiệu `{{ }}` và các khai báo biến, ngăn cách bởi dấu `|` (gần giống với cơ chế đường ống lệnh của linux).
+**Filters** thay đổi đầu ra của một giá trị hoặc một object. Chúng được sử dụng trong các khai báo nằm trong biểu thức có kí hiệu `{{ }}` và các khai báo biến, ngăn cách bởi dấu `|` (giống với cơ chế đường ống lệnh của linux).
 
 ```liquid title="Input"
 {{ "/my/fancy/url" | append: ".html" }}

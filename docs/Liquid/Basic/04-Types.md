@@ -68,7 +68,7 @@ Arrays là danh sách các biến.
 
 ### Truy cập thông tin các item trong một Arrays
 
-Để truy cập thông tin các item trong array, bạn có thể lặp từng item thông qua vòng lặp `for`:
+Để truy cập thông tin các item trong array, bạn có thể lặp từng item thông qua vòng lặp [for](../Tags/Iteration#for):
 
 ```liquid title="Input"
 <!-- if site.users = "Tobi", "Laura", "Tetsuro", "Adam" -->
@@ -99,7 +99,9 @@ Adam
 
 ### Khởi tạo mảng
 
+:::danger
 Bạn không thể khởi tạo mảng trong Liquid.
+:::
 
 Tuy nhiên, bạn vẫn có thể sử dụng filter `split` để tách chuỗi lớn thành một mảng các chuỗi kí tự con.
 
@@ -125,5 +127,6 @@ Bạn có thể kiểm tra nếu như một object tồn tại hay không trư�
   <div>{{ pages.frontpage.content }}</div>
 {% endunless %}
 ```
-
+:::note
 Empty strings và empty arrays sẽ trả về true nếu so sánh với `empty`.
+:::

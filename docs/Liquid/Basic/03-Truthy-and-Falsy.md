@@ -4,11 +4,13 @@ title: Truthy and falsy
 
 # Truthy và falsy
 
-Khi một giá trị không thuộc kiểu dữ liệu [boolean](./types#boolean) được sử dụng trong một ngữ cảnh có điều kiện (như các tag điều kiện `{% if ... %}`), Liquid sẽ quyết định quy đổi giá trị đó về `true` hoặc `false`. Giá trị được quy đổi về `true` được gọi là **truthy**. Giá trị được quy đổi về `false` được gọi là **falsy**.
+Khi một giá trị không thuộc kiểu dữ liệu [boolean](./Types#boolean) được sử dụng trong một ngữ cảnh có điều kiện (như các tag điều kiện `{% if ... %}`), Liquid sẽ quyết định quy đổi giá trị đó về `true` hoặc `false`. Giá trị được quy đổi về `true` được gọi là **truthy**. Giá trị được quy đổi về `false` được gọi là **falsy**.
 
 ## Truthy
 
-**Tất cả các giá trị trong Liquid đều là `truthy`, trừ `nil` và `false`**.
+:::tip
+Tất cả các giá trị trong Liquid đều là `truthy`, trừ `nil` và `false`.
+:::
 
 Ở ví dụ dưới đây, từ "Tobi" tuy không phải là một boolean, nhưng nó vẫn được coi là một truthy trong câu lệnh điều kiện:
 
