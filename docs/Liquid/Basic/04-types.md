@@ -16,7 +16,7 @@ Liquid objects có 6 kiểu dữ liệu:
 
 Strings là các chuỗi kí tự.
 
-```html
+```liquid
 {% assign my_string = "Hello World!" %}
 ```
 
@@ -24,7 +24,7 @@ Strings là các chuỗi kí tự.
 
 Numbers bao gồm floats và integers:
 
-```html
+```liquid
 {% assign my_int = 25 %}
 {% assign my_float = -39.756 %}
 ```
@@ -33,7 +33,7 @@ Numbers bao gồm floats và integers:
 
 Booleans có giá trị là `true` và `false`.
 
-```html
+```liquid
 {% assign foo = true %}
 {% assign bar = false %}
 ```
@@ -46,7 +46,7 @@ Nil là một falsy.
 
 Ở ví dụ dưới đây, nếu như user không tồn tại (user trả về nil), Liquid sẽ không render dòng chữ hello:
 
-```html
+```liquid
 {% if user %}
   Hello {{ user.name }}!
 {% endif %}
@@ -54,11 +54,11 @@ Nil là một falsy.
 
 Tags hoặc bất cứ giá trị output nào cho ra nil đều bị Liquid bỏ qua không render.
 
-```html title="Input"
+```liquid title="Input"
 The current user is {{ user.name }}
 ```
 
-```html title="Output"
+```liquid title="Output"
 The current user is
 ```
 
@@ -70,14 +70,14 @@ Arrays là danh sách các biến.
 
 Để truy cập thông tin các item trong array, bạn có thể lặp từng item thông qua vòng lặp `for`:
 
-```html title="Input"
+```liquid title="Input"
 <!-- if site.users = "Tobi", "Laura", "Tetsuro", "Adam" -->
 {% for user in site.users %}
   {{ user }}
 {% endfor %}
 ```
 
-```html title="Output"
+```liquid title="Output"
   Tobi Laura Tetsuro Adam
 ```
 
@@ -85,13 +85,13 @@ Arrays là danh sách các biến.
 
 Sử dụng kí hiệu `[]` để truy cập item với vị trí cụ thể trong mảng. Index đầu tiên của mảng bắt đầu bằng số 0. Nếu như index là giá trị âm thì sẽ tính từ cuối mảng.
 
-```html title="Input"
+```liquid title="Input"
 <!-- if site.users = "Tobi", "Laura", "Tetsuro", "Adam" -->
 {{ site.users[0] }}
 {{ site.users[1] }}
 {{ site.users[-1] }}
 ```
-```html title="Output"
+```liquid title="Output"
 Tobi
 Laura
 Adam
@@ -108,7 +108,7 @@ Tuy nhiên, bạn vẫn có thể sử dụng filter `split` để tách chuỗi
 EmptyDrop là một object trả về từ Liquid nếu như dữ liệu của chúng bị xóa bỏ. 
 Ở ví dụ dưới đây, `page_1`, `page_2` và `page_3` là các EmptyDrop objects:
 
-```html
+```liquid
 {% assign variable = "hello" %}
 {% assign page_1 = pages[variable] %}
 {% assign page_2 = pages["does-not-exist"] %}
@@ -119,7 +119,7 @@ EmptyDrop là một object trả về từ Liquid nếu như dữ liệu của c
 
 Bạn có thể kiểm tra nếu như một object tồn tại hay không trước khi truy cập đến thuộc tính của chúng.
 
-```html
+```liquid
 {% unless pages == empty %}
   <h1>{{ pages.frontpage.title }}</h1>
   <div>{{ pages.frontpage.content }}</div>

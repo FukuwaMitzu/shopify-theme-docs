@@ -12,20 +12,22 @@ Khi một giá trị không thuộc kiểu dữ liệu [boolean](./types#boolean
 
 Ở ví dụ dưới đây, từ "Tobi" tuy không phải là một boolean, nhưng nó vẫn được coi là một truthy trong câu lệnh điều kiện:
 
-```html
-{% assign name = "Tobi" %} {% if name %} This text will always appear since
-"name" is defined. {% endif %}
+```liquid
+{% assign name = "Tobi" %}
+{% if name %}
+This text will always appear since "name" is defined.
+{% endif %}
 ```
 
 Strings, ngay cả khi rỗng, vẫn được coi là truthy. Ví dụ sau vẫn sẽ tạo ra 1 tag HTML rỗng, mặc dù giá trị `page.category` tồn tại nhưng là một chuỗi rỗng:
 
-```html title="Input"
+```liquid title="Input"
 {% if page.category %}
 <h1>{{ page.category }}</h1>
 {% endif %}
 ```
 
-```html title="Output"
+```liquid title="Output"
 <h1></h1>
 ```
 

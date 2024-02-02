@@ -11,11 +11,11 @@ Liquid sử dụng sự kết hợp giữa [objects](#objects), [tags](#tags) v�
 
 **Objects** chứa nội dung mà Liquid sẽ hiển thị lên ở một page. Objects và tất cả các các giá trị khác được Liquid hiển thị ngăn cách bởi 2 kí hiệu `{{` và `}}`
 
-```html title="Input"
+```liquid title="Input"
 {{ page.title }}
 ```
 
-```html title="Output"
+```liquid title="Output"
 Introduction
 ```
 
@@ -25,13 +25,13 @@ Introduction
 
 **Tags** được dùng để kiểm soát logic hiển thị cho một template hoặc khai báo biến. Logic tags được ngăn cách bởi 2 kí hiệu là `{%` và `%}`.
 
-```html title="Input"
+```liquid title="Input"
 {% if user %}
   Hello {{ user.name }}!
 {% endif %}
 ```
 
-```html title="Output"
+```liquid title="Output"
   Hello Adam!
 ```
 
@@ -47,10 +47,10 @@ Truy cập từng mục để hiểu thêm về cách sử dụng các loại ta
 
 **Filters** thay đổi đầu ra của một giá trị hoặc một object. Chúng được sử dụng trong các khai báo nằm trong biểu thức có kí hiệu `{{ }}` và các khai báo biến, ngăn cách bởi dấu `|` (gần giống với cơ chế đường ống lệnh của linux).
 
-```html title="Input"
+```liquid title="Input"
 {{ "/my/fancy/url" | append: ".html" }}
 ```
 
-```html title="Output"
+```liquid title="Output"
 /my/fancy/url.html
 ```

@@ -21,31 +21,36 @@ Là một templating language, Liquid giới hạn khá nhiều các toán tử,
 
 Ví dụ:
 
-```html
-{% if product.title == "Awesome Shoes" %} These shoes are awesome! {% endif %}
+```liquid
+{% if product.title == "Awesome Shoes" %}
+These shoes are awesome!
+{% endif %}
 ```
 
 Bạn cũng có thể kết hợp các phép logic với nhau thông qua 2 phép toán `or` hoặc `and`:
 
-```html
-{% if product.type == "Shirt" or product.type == "Shoes" %} This is a shirt or a
-pair of shoes. {% endif %}
+```liquid
+{% if product.type == "Shirt" or product.type == "Shoes" %}
+This is a shirt or a pair of shoes.
+{% endif %}
 ```
 
 ## contains
 
 `contains` kiểm tra liệu có sự xuất hiện của chuỗi văn bản con trong một chuỗi nội dung hoàn chỉnh.
 
-```html
-{% if product.title contains "Pack" %} This product's title contains the word
-Pack. {% endif %}
+```liquid
+{% if product.title contains "Pack" %}
+This product's title contains the word Pack.
+{% endif %}
 ```
 
 `contains` cũng có thể dùng để kiểm tra sự xuất hiện của giá trị trong một mảng.
 
-```html
-{% if product.tags contains "Hello" %} This product has been tagged with
-"Hello". {% endif %}
+```liquid
+{% if product.tags contains "Hello" %}
+This product has been tagged with "Hello".
+{% endif %}
 ```
 
 `contains` chỉ có thể dùng với string. Bạn không thể dùng để kiểm tra sự xuất hiện của object trong một danh sách các object.
@@ -54,13 +59,14 @@ Pack. {% endif %}
 
 Với các tags có nhiều hơn một các phép toán `or` hoặc `and`, sẽ được thực thi từ _phải_ sang _trái_. Đặc biệt, bạn **không thể** dùng kí hiệu `()` để nhóm các điều kiện với nhau, vì đây là kí hiệu không hợp lệ. Liquid sẽ bỏ qua những tag chứa các kí hiệu không hợp lệ đó.
 
-```html
-{% if true or false and false %} This evaluates to true, since the `and`
-condition is checked first. {% endif %}
+```liquid
+{% if true or false and false %}
+This evaluates to true, since the `and` condition is checked first.
+{% endif %}
 ```
 
-```html
-{% if true and false and false or true %} This evaluates to false, since the
-tags are checked like this: true and (false and (false or true)) true and (false
-and true) true and false false {% endif %}
+```liquid
+{% if true and false and false or true %}
+This evaluates to false, since the tags are checked like this: true and (false and (false or true)) true and (false and true) true and false false
+{% endif %}
 ```
