@@ -167,7 +167,7 @@ Bạn có thể tiếp tục lặp một danh sách tại vị trí dang dở c�
 
 ### reversed
 
-Đảo ngược vị trí lặp.
+Đảo ngược thứ tự lặp.
 
 ```liquid title="Input"
 <!-- if array = [1,2,3,4,5,6] -->
@@ -219,9 +219,54 @@ orange-strawberry-banana
 | `parentloop` | Giá trị forloop của vòng lặp cha . Nếu như vòng lặp hiện tại không nằm trong một vòng lặp khác sẽ trả về nil. | `forloop`   |
 | `index`      | Vị trí hiện tại của vòng lặp với dãy tính từ 1.                                                               | `number`    |
 | `index0`     | Vị trí hiện tại của vòng lặp với dãy tính từ 0.                                                               | `number`    |
-| `rindex`     | Vị trí hiện tại của vòng lặp tính từ phải sang. Nhưng dãy tính từ 1.                                          | `number`    |
-| `rindex0`    | Vị trí hiện tại của vòng lặp tính từ phải sang. Nhưng dãy tính từ 0.                                          | `number`    |
-| `first`      | Trả về `true` nếu đang lặp ở vị trí đầu tiên. Ngược lại trả về `false`.                                       | `boolean`   |
-| `last`       | Trả về `true` nếu đang ở vị trí cuối cùng. Ngược lại trả về `false`.                                          | `boolean`   |
+| `rindex`     | Vị trí hiện tại của vòng lặp tính từ phải sang. **Nhưng dãy tính từ 1**.                                      | `number`    |
+| `rindex0`    | Vị trí hiện tại của vòng lặp tính từ phải sang. **Nhưng dãy tính từ 0**.                                      | `number`    |
+| `first`      | Trả về `true` nếu đang lặp ở vị trí **đầu tiên**. Ngược lại trả về `false`.                                   | `boolean`   |
+| `last`       | Trả về `true` nếu đang lặp ở vị trí **cuối cùng**. Ngược lại trả về `false`.                                  | `boolean`   |
 
-## Cycle
+## cycle
+
+Lặp qua một nhóm các chuỗi kí tự và in chúng theo thứ tự truyền dưới dạng tham số. Mỗi khi qua một phần tử trong vòng lặp, cycle sẽ đẩy con trỏ danh sách tham số khai báo của nó tới tham số tiếp theo và in giá trị đó. Và sẽ quay vòng liên tục.
+
+`cycle` phải sử dụng trong vòng lặp for.
+
+
+```liquid title="Input"
+{% cycle "one", "two", "three" %}
+{% cycle "one", "two", "three" %}
+{% cycle "one", "two", "three" %}
+{% cycle "one", "two", "three" %}
+```
+
+```html title="Output"
+one
+two
+three
+one
+```
+
+:::tip
+
+Ứng dụng thực tế của `cycle`:
++ Áp dụng css class odd/even cho trang trí row table.
++ Áp dụng css class cho cột cuối cùng của một product row.
+
+:::
+
+## cycle (parameters)
+
+cycle có thể được gom theo nhóm trong trường hợp ta cần sử dụng nhiều loại `cycle` trong template. Nếu không cung cấp tên group cho cycle, cycle sẽ ngầm hiểu các câu lệnh gọi đến cùng một danh sách các tham số được quy về cùng một group.
+
+```liquid title="Input"
+{% cycle "first": "one", "two", "three" %}
+{% cycle "second": "one", "two", "three" %}
+{% cycle "second": "one", "two", "three" %}
+{% cycle "first": "one", "two", "three" %}
+```
+
+```html title="Output"
+one
+one
+two
+two
+```
