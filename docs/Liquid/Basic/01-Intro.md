@@ -38,7 +38,7 @@ Introduction
 Tags trong Liquid được chia ra làm 4 loại:
 + [Control flow](../Tags/Control-flow)
 + [Iteration](../Tags/Iteration)
-+ Template
++ [Template](../Tags/Template)
 + Variable assignment
 
 Truy cập từng mục để hiểu thêm về cách sử dụng các loại tag trên.

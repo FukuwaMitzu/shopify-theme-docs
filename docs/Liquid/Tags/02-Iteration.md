@@ -230,7 +230,6 @@ Lặp qua một nhóm các chuỗi kí tự và in chúng theo thứ tự truy�
 
 `cycle` phải sử dụng trong vòng lặp for.
 
-
 ```liquid title="Input"
 {% cycle "one", "two", "three" %}
 {% cycle "one", "two", "three" %}
@@ -239,17 +238,15 @@ Lặp qua một nhóm các chuỗi kí tự và in chúng theo thứ tự truy�
 ```
 
 ```html title="Output"
-one
-two
-three
-one
+one two three one
 ```
 
 :::tip
 
 Ứng dụng thực tế của `cycle`:
-+ Áp dụng css class odd/even cho trang trí row table.
-+ Áp dụng css class cho cột cuối cùng của một product row.
+
+- Áp dụng css class odd/even cho trang trí row table.
+- Áp dụng css class cho cột cuối cùng của một product row.
 
 :::
 
@@ -265,8 +262,155 @@ cycle có thể được gom theo nhóm trong trường hợp ta cần sử dụ
 ```
 
 ```html title="Output"
-one
-one
-two
-two
+one one two two
 ```
+
+## tablerow
+
+Khởi tạo table trong HTML. Tag này cần phải nằm giữa nội dung thẻ `<table>` và `</table>`.
+Để sử dụng các thuộc tính có sẵn của tablerow. Đọc thêm về thuộc tính [`tablrowloop`](#tablerowloop-object) (object).
+
+```liquid title="Input"
+<table>
+{% tablerow product in collection.products %}
+  {{ product.title }}
+{% endtablerow %}
+</table>
+```
+
+```html title="Output"
+<table>
+  <tr class="row1">
+    <td class="col1">Cool Shirt</td>
+    <td class="col2">Alien Poster</td>
+    <td class="col3">Batman Poster</td>
+    <td class="col4">Bullseye Shirt</td>
+    <td class="col5">Another Classic Vinyl</td>
+    <td class="col6">Awesome Jeans</td>
+  </tr>
+</table>
+```
+
+## tablerow (parameters)
+
+Các tham số vòng lặp được đặt sau biểu thức vòng lặp có dạng `foo:bar`, trong đó `foo` là từ khóa và `bar` là giá trị tham số.
+
+### cols
+
+Xác định số lượng cột cần có của một hàng.
+
+```liquid title="Input"
+{% tablerow product in collection.products cols:2 %}
+  {{ product.title }}
+{% endtablerow %}
+```
+
+```liquid title="output"
+<table>
+  <tr class="row1">
+    <td class="col1">
+      Cool Shirt
+    </td>
+    <td class="col2">
+      Alien Poster
+    </td>
+  </tr>
+  <tr class="row2">
+    <td class="col1">
+      Batman Poster
+    </td>
+    <td class="col2">
+      Bullseye Shirt
+    </td>
+  </tr>
+  <tr class="row3">
+    <td class="col1">
+      Another Classic Vinyl
+    </td>
+    <td class="col2">
+      Awesome Jeans
+    </td>
+  </tr>
+</table>
+```
+
+### limit
+
+Thoát khỏi vòng lặp với một vị trí nhất định.
+
+```liquid
+{% tablerow product in collection.products cols:2 limit:3 %}
+  {{ product.title }}
+{% endtablerow %}
+```
+
+### offset
+
+Bắt đầu vòng lặp sau một vị trí nhất định.
+
+```liquid
+{% tablerow product in collection.products cols:2 offset:3 %}
+  {{ product.title }}
+{% endtablerow %}
+```
+
+### range
+
+Tham số đặc biệt xác định khoảng giá trị cần lặp.
+
+```liquid
+<!--variable number example-->
+
+{% assign num = 4 %}
+<table>
+{% tablerow i in (1..num) %}
+  {{ i }}
+{% endtablerow %}
+</table>
+
+<!--literal number example-->
+
+<table>
+{% tablerow i in (3..5) %}
+  {{ i }}
+{% endtablerow %}
+</table>
+```
+
+## tablerowloop (object)
+
+Chứa thông tin của vòng lặp dùng tablerow.
+
+```json
+{
+  "col": 1,
+  "col0": 0,
+  "col_first": true,
+  "col_last": false,
+  "first": true,
+  "index": 1,
+  "index0": 0,
+  "last": false,
+  "length": 5,
+  "rindex": 5,
+  "rindex0": 4,
+  "row": 1
+}
+```
+
+### tablerowloop (properties)
+
+| Thuộc tính  | Mô tả                                                                        | Giá trị trả về |
+| ----------- | ---------------------------------------------------------------------------- | -------------- |
+| `col`       | Vị trí hiện tại của cột. Dãy tính từ 1.                                      | `number`       |
+| `col0`      | Vị trí hiện tại của cột. Dãy tính từ 0.                                      | `number`       |
+| `col_first` | Trả về `true` nếu đang lặp vị trí đầu tiên của cột. Trả về `false` nếu sai.  | `boolean`      |
+| `col_last`  | Trả về `true` nếu đang lặp vị trí cuối cùng của cột. Trả về `false` nếu sai. | `boolean`      |
+| `first`     | Trả về `true` nếu đang lặp vị trí phần tử đầu tiên. Trả về `false` nếu sai.  | `boolean`      |
+| `index`     | Vị trí hiện tại của vòng lặp. Dãy tính từ 1.                                 | `number`       |
+| `index0`    | Vị trí hiện tại của vòng lặp. Dãy tính từ 0.                                 | `number`       |
+| `last`      | Trả về `true` nếu đang lặp vị trí phần tử cuối cùng. Trả về `false` nếu sai. | `boolean`      |
+| `length`    | Tổng số lượng phần tử của vòng lặp.                                          | `number`       |
+| `rindex`    | Vị trí hiện tại của vòng lặp tính từ phải sang. Nhưng với dãy tính từ 1.     | `number`       |
+| `rindex0`   | Vị trí hiện tại của vòng lặp tính từ phải sang. Nhưng với dãy tính từ 0.     | `number`       |
+| `row`       | Vị trí hiện tại của phần tử với dãy tính từ 1.                               | `number`       |
