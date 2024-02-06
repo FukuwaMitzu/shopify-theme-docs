@@ -144,7 +144,7 @@ Object cũng có thể được truyền thông qua tham số.
 {% render "product", product: featured_product %}
 ```
 
-## with
+### with
 
 Object có thể được truyền vào template bằng cách sử dụng từ khóa `with` với tùy chọn `as` thay thế tên tham biến.
 
@@ -155,7 +155,7 @@ Object có thể được truyền vào template bằng cách sử dụng từ k
 
 Ở ví dụ trên, `product` nằm trong template được render sẽ nhận giá trị của biến `featured_product` nằm ở template cha.
 
-## for
+### for
 
 Bạn có thể thực hiện render các phần tử của một mảng với cùng một template thông qua từ khóa `for` với tùy chọn `as` thay thế tên tham biến của các phần tử.
 
@@ -169,3 +169,7 @@ Bạn có thể thực hiện render các phần tử của một mảng với c
 :::note
 Khi sử dụng `for`, bạn có thể truy cập thuộc tính [`forloop`](./Iteration#forloop-object) từ template con.
 :::
+
+## include
+
+Từ khóa `include` đã không còn support nữa. Chuyển sang sử dụng [`render`](#render).
