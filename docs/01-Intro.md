@@ -20,7 +20,6 @@ Là một nhà phát triển, bạn nên tối ưu các tính năng, sắp xếp
 Một page hoàn chỉnh được xây dựng nên từ các thành phần sau.
 ![](https://shopify.dev/assets/themes/architecture/all-components.png)
 
-
 1. [**Layout file**](https://shopify.dev/docs/themes/architecture/layouts)
 2. [**Template**](https://shopify.dev/docs/themes/architecture/templates) được áp dụng để hiển thị page
 3. [**Section groups**](https://shopify.dev/docs/themes/architecture/section-groups) chứa các [section](https://shopify.dev/docs/themes/architecture/sections) và [app block](https://shopify.dev/docs/themes/architecture/sections/app-blocks). Admin có thể thêm các section vào trong section group, hoặc loại bỏ 1 số thành phần và sắp xếp chúng tùy ý thông qua theme editor.
@@ -35,10 +34,11 @@ Với cấu trúc như thế này, ta có thể dễ dàng tạo ra các block c
 ### Hỗ trợ khả năng tùy biến cho merchant
 
 Merchant có thể tùy biến theme của họ thông qua Shopify admin bằng cách sử dụng công cụ [Shopify theme editor](https://shopify.dev/docs/themes/tools/online-editor). Bạn có thể cung cấp các lựa chọn tùy biến nội dung page, cho phép các merchant có thể quản lý và tạo ra các nội dung nhằm nâng cao trải nghiệm người dùng mà không cần phải code:
-+ Bạn có thể khởi tạo các khối nội dung theo hướng module hóa. Bằng cách sử dụng [sections và blocks](https://shopify.dev/docs/themes/best-practices/templates-sections-blocks).
-+ Bạn có thể khởi tạo các [lựa chọn cấu hình](https://shopify.dev/docs/themes/architecture/settings) cho phép merchant có thể thiết lập hành vi và giao diện của theme. Merchant cũng có thể thiết lập các giá trị linh động bằng cách sử dụng [dynamic sources](https://shopify.dev/docs/themes/architecture/settings/dynamic-sources).
 
-### Các tài nguyên bố sung
+- Bạn có thể khởi tạo các khối nội dung theo hướng module hóa. Bằng cách sử dụng [sections và blocks](https://shopify.dev/docs/themes/best-practices/templates-sections-blocks).
+- Bạn có thể khởi tạo các [lựa chọn cấu hình](https://shopify.dev/docs/themes/architecture/settings) cho phép merchant có thể thiết lập hành vi và giao diện của theme. Merchant cũng có thể thiết lập các giá trị linh động bằng cách sử dụng [dynamic sources](https://shopify.dev/docs/themes/architecture/settings/dynamic-sources).
+
+### Các tài nguyên bổ sung
 
 Bạn có thể thêm các tài nguyên khác như js files, css,... để đồng nhất giao diện thành phần và các tính năng có trên theme, hoặc để lưu trữ các tài nguyên có tính tái sử dụng cho các component khác.
 
@@ -47,6 +47,7 @@ Ví dụ như, khởi tạo các file css định nghĩa các class cần thiế
 Ngoài ra, bạn cũng có thể cung cấp translation cho theme thông qua các locale files, được lưu tại thư mục [locales](https://shopify.dev/docs/themes/architecture/locales).
 
 ---
+
 ### Tư liệu tham khảo
 
-+ [Shopify themes overview](https://shopify.dev/docs/themes/getting-started)
+- [Shopify themes overview](https://shopify.dev/docs/themes/getting-started)
