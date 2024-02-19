@@ -33,3 +33,7 @@
   aspect-ratio: 16 / 9;
   width: 100%;
 }
+
+.medium-image-container{
+  max-width: 420px;
+}
