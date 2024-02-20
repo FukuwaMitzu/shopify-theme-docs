@@ -44,7 +44,7 @@ Một ví dụ đơn giản của template file `product.json` như sau:
 }
 ```
 
-Ở trường hợp này, một product page sẽ hiển thị một section có tên file là `main-product.liquid`, và đây là section duy nhất mặc định hiển thị. Nếu một merchant tùy biến page này, và thêm nhiều section khác vào trong page, file `product.json` sẽ được update theo dữ liệu mới nhất.
+Ở trường hợp này, một product page sẽ hiển thị một section có tên file là `main-product.liquid`, và đây là section duy nhất mặc định hiển thị. Nếu một merchant tùy biến page này, và thêm nhiều section khác vào trong page, file `product.json` sẽ được update theo dữ liệu tùy chỉnh đó.
 
 ## Basics of sections
 
@@ -80,7 +80,7 @@ Những section thuộc loại này nên được thêm vào các page bởi mer
 
 Tuy nhiên, vẫn có khả năng hạn chế một section chỉ có thể hiển thị ở một số loại page nhất định bằng cách dùng thuộc tính [**templates**](https://shopify.dev/docs/themes/architecture/sections/section-schema#enabled_on) của mục **enabled_on** hoặc **disable_on** trong schema. Ví dụ, nếu như bạn muốn giới hạn một section chỉ có thể hiển thị ở product và collection page, bạn nên thêm dòng này trong `schema` tag:
 
-```js 
+```js
 {
   "enabled_on": {
     "templates": ["product", "collection"],
@@ -90,7 +90,62 @@ Tuy nhiên, vẫn có khả năng hạn chế một section chỉ có thể hi�
 
 Thuộc tính `templates` nhận danh sách các string đại diện cho [page type](https://shopify.dev/docs/api/liquid/objects/request#request-page_type).
 
-## Section settings 
+## Section settings
+
+Như chúng ta được biết, các setting đều khai báo trong các section file, nằm bên trong các tag `{% schema %}`. Thông tin nằm trong tag này sẽ được hiển thị trên giao diện của theme editor. Bắt đầu với một ví dụ khởi tạo một text section thông thường như sau:
+
+```liquid
+<div class="custom-text-section">
+  <h2> {{ section.settings.custom_text_title }} </h2>
+  <div>{{ section.settings.custom_text_body }}</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Text Box",
+    "settings": [
+      {
+        "id": "custom_text_title",
+        "type": "text",
+        "label": "Text box heading",
+        "default": "Title"
+      },
+      {
+        "id": "custom_text_body",
+        "type": "richtext",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      }
+    ]
+  }
+{% endschema %}
+```
+
+Ở ví dụ này chúng ta có 2 thành phần HTML: thẻ `<h2>` và `<div>`. Mỗi thành phần chứa nội dung động là các giá trị thuộc `section.settings` - một Liquid object cho phép tham chiếu đến thông tin setting được cập nhật từ theme editor bởi merchant.
+
+Bên dưới nội dung HTML là tag `{% schema %}` của Liquid nơi chứa thông tin setting của section. Mỗi setting là một object, chúng ta sẽ định nghĩa các thông tin căn bản cho setting như id, type và các thông tin hiển thị của chúng trên theme editor. Để truy cập thông tin các setting trong Liquid, ta chèn thêm id của setting bên cạnh `section.settings`. Thêm nữa chúng ta cũng khai báo kiểu dữ liệu của setting và giao diện nhập liệu của chúng trên theme editor.
+
+Thông tin settings hiện tại của chúng ta gồm:
+
+- **id** là thuộc tính nằm trong biến `section.settings` của Liquid
+- **type** xác định kiểu dữ liệu đầu ra của setting
+- **label** của setting trên theme editor
+- **default** chứa giá trị mặc định của setting
+
+Ví dụ trên chúng ta chỉ khởi tạo một text box cho phần heading và richtext box cho nội dung chính của section, bạn có thể thêm nhiều hơn các loại setting khác (image_pick, radio, video_url và font_picker,...) và bố cục lại layout cho section tùy vào yêu cầu của khách hàng.
+
+Vậy là chúng ta đã tạo xong một section, tuy nhiên ta vẫn thiếu một khía cạnh quan trọng: xác định nơi mà section sẽ xuất hiện trên theme. Phần tìm hiểu thêm một số bước tiếp cận khi chèn các sections ta sẽ để sau, bây giờ ta sẽ cấu hình cho phép section có thể add ở trong theme editor trên bất cứ page nào bằng cách khởi tạo presets.
+
+Presets là các cấu hình mặc định của sections, nằm trong `{% schema %}` tags. Ở ví dụ của chúng ta, presets trông như sau:
+
+```liquid
+"presets": [
+  {
+  "name": "custom-text",
+  "category": "Custom"
+  }
+]
+```
 
 ## Tham khảo
 
