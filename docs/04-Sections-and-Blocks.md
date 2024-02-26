@@ -134,7 +134,7 @@ Thông tin settings hiện tại của chúng ta gồm:
 
 Ví dụ trên chúng ta chỉ khởi tạo một text box cho phần heading và richtext box cho nội dung chính của section, bạn có thể thêm nhiều hơn các loại setting khác (image_pick, radio, video_url và font_picker,...) và bố cục lại layout cho section tùy vào yêu cầu của khách hàng.
 
-Vậy là chúng ta đã tạo xong một section, tuy nhiên ta vẫn thiếu một khía cạnh quan trọng: xác định nơi mà section sẽ xuất hiện trên theme. Phần tìm hiểu thêm một số bước tiếp cận khi chèn các sections ta sẽ để sau, bây giờ ta sẽ cấu hình cho phép section có thể add ở trong theme editor trên bất cứ page nào bằng cách khởi tạo presets.
+Vậy là chúng ta đã tạo xong một section, tuy nhiên ta vẫn thiếu một khía cạnh quan trọng: xác định nơi mà section sẽ xuất hiện trên theme. Phần tìm hiểu thêm một số bước tiếp cận khi chèn các sections ta sẽ để sau, bây giờ ta cấu hình cho phép section có thể add ở trong theme editor trên bất cứ page nào bằng cách khởi tạo presets.
 
 Presets là các cấu hình mặc định của sections, nằm trong `{% schema %}` tags. Ở ví dụ của chúng ta, presets trông như sau:
 
@@ -146,6 +146,107 @@ Presets là các cấu hình mặc định của sections, nằm trong `{% schem
   }
 ]
 ```
+
+Sau khi đã thêm dòng code trên, phần custom text-box section của chúng ta sẽ trông như thế này:
+
+```liquid
+<div class="custom-text-section">
+  <h2> {{ section.settings.custom_text_title }} </h2>
+  <div>{{ section.settings.custom_text_body }}</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Text Box",
+    "settings": [
+      {
+        "id": "custom_text_title",
+        "type": "text",
+        "label": "Text box heading",
+        "default": "Title"
+      },
+      {
+        "id": "custom_text_body",
+        "type": "richtext",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      }
+    ],
+    "presets": [
+      {
+        "name": "custom-text",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}
+```
+
+Bây giờ, trên theme editor, nếu như ta chọn phần **Add section** trên bất cứ page nào, section này sẽ xuất hiện dưới dạng option có sẵn. Phần settings mà chúng ta đã khởi tạo cũng sẽ xuất hiện ở sidebar bên phải với các label và các text mặc định do ta khai báo. Từ đây ta có thể hiệu chỉnh thông tin các setting cho section của chúng ta, giao diện section từ đó mà cũng thay đổi theo.
+
+## Including sections on pages
+
+Có một số phương pháp để ta có thể include các section trên các page của một theme. Chúng ta sẽ tìm hiểu từng cách tiếp cận của các phương pháp và phát hiện ra những quy luật nào áp dụng cho những phương pháp đó.
+
+### Thêm sections trong các file JSON template
+
+Khi chúng ta nhìn vào nội dung khai báo section của các main page section nằm trong file JSON template, chúng ta thấy trong section luôn nhận một thuộc tính `main`, đây là section default của page đó và nó sẽ chứa các nội dung quan trọng cho page đó.
+
+Bên cạnh `main` section, ta còn có thể thêm các section khác mà chúng cũng sẽ hiển thị mặc định trên page. Lấy một ví dụ ở file JSON template sau, ta thêm một product recommendations section trên page bằng cách thêm một object mới ngay dưới `main` section:
+
+```js
+{
+  "name": "Product",
+  "sections": {
+    "main": {
+      "type": "product-template"
+    },
+    "recommendations": {
+      "type": "product-recommendations"
+    }
+  },
+  "order": [
+    "main",
+    "recommendations"
+  ]
+}
+```
+
+Ở trường hợp trên, ta đang gán name cho section đó, gọi là `recommendations`, và thuộc tính `type` của section này là để xác định file nào nằm trong mục sections sẽ được thêm vào.
+
+Vì JSON templates có thể thêm nhiều hơn một sections, ta nên định nghĩa thứ tự các section sẽ xuất hiện, thông qua thuộc tính `order`. Tất các các section được include vào trong một file JSON template sẽ phải thiết lập thứ tự mặc định. Tuy nhiên, merchant vẫn có thể sắp xếp lại thứ tự của section trên theme editor.
+
+Section không có presets mà được thêm vào JSON templates sẽ không thể bị loại bỏ thông qua theme editor, nhưng có thể ẩn đi nếu như merchant không cần chúng.
+
+### Thêm sections dưới dạng options cho tất cả các page
+
+Như chúng ta đã thấy ở ví dụ custom text section, ta có thể biến một section xuất hiện trên tất cả các page một khi ta khai báo `presets` ở phần cấu hình `schema`.
+
+```liquid
+"presets": [
+{
+"name": "custom-text",
+"category": "Custom"
+}
+]
+```
+
+Khi section được include thông qua phương pháp này, các sections đó có thể được thêm, thay đổi vị trí và xóa bỏ thông qua theme editor. Các section này cũng có thể giới hạn cho một số page thông qua thuộc tính `templates`.
+
+Với chức năng kéo thả các section đối với các sections có khai báo presets sẽ cho phép bạn xây dựng các dynamic sections (sections động), bạn có thể tạo thêm nhiều lựa chọn cho việc tùy biến và cá nhân hóa store của bạn. Bạn có thể tạo ra các section linh hoạt, di động như video, products hoặc image galleries.
+Ví dụ cho một section sử dụng phương pháp này là [newsletter section của Dawn theme](https://github.com/Shopify/dawn/blob/main/sections/newsletter.liquid).
+
+### Sử dụng `{% section %}` tags để thêm các static section
+
+`section` tag của Liquid cho phép bạn render một section từ thư mục `/sections` trong một Liquid layout hoặc một file template. Tag này có thể có dạng như:
+
+```liquid
+{% section 'header' %}
+```
+
+Các section được thêm bằng các sử dụng `section` tag sẽ không thể bị loại bỏ, thay đổi vị trí hay ẩn đi thông qua theme editor. Vị trí của section trên page bị khóa lại, và phụ thuộc vào nơi mà chúng được thêm trong một layout file hoặc template.
+
+Bước tiếp cận này thường được sử dụng cho nội dung và các thành phần mà luôn hiển thị trên page như headers, footers và announcement bars. Lấy một ví dụ như của theme Dawn, bạn có thể kiểm tra file [`theme.liquid`](https://github.com/Shopify/dawn/blob/main/layout/theme.liquid#L112) nơi sẽ include header và footer sections thông qua `section` tag.
 
 ## Tham khảo
 
