@@ -16,3 +16,24 @@ Theme files được chia làm 3 mục:
 
 + [**Config files**](https://shopify.dev/docs/themes/architecture#allowing-for-customization-of-theme-components) - Bao gồm các JSON file để lưu thông tin cấu hình có thể sử dụng để tùy biến bởi merchant thông qua [theme editor](https://shopify.dev/docs/themes/tools/online-editor).
 
+## Cấu trúc thư mục và các thành phần
+
+```bash title="Shopify theme directory structure"
+.
+├── assets
+├── config
+├── layout
+├── locales
+├── sections
+├── snippets
+└── templates
+    └── customers
+```
+
+Các thư mục con không nằm trong các thư mục kể trên sẽ không được Shopify hỗ trợ.
+
+### `assets`
+
+Thư mục `assets` chứa tất cả các tài nguyên sử dụng trong theme, bao gồm ảnh, css, file JavaScript.
+
+Sử dụng filter asset_url của Liquid để lấy thông tin đường dẫn tài nguyên theme của bạn.

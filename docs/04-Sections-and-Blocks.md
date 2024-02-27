@@ -134,7 +134,7 @@ Thông tin settings hiện tại của chúng ta gồm:
 
 Ví dụ trên chúng ta chỉ khởi tạo một text box cho phần heading và richtext box cho nội dung chính của section, bạn có thể thêm nhiều hơn các loại setting khác (image_pick, radio, video_url và font_picker,...) và bố cục lại layout cho section tùy vào yêu cầu của khách hàng.
 
-Vậy là chúng ta đã tạo xong một section, tuy nhiên ta vẫn thiếu một khía cạnh quan trọng: xác định nơi mà section sẽ xuất hiện trên theme. Phần tìm hiểu thêm một số bước tiếp cận khi chèn các sections ta sẽ để sau, bây giờ ta cấu hình cho phép section có thể add ở trong theme editor trên bất cứ page nào bằng cách khởi tạo presets.
+Vậy là chúng ta đã tạo xong một section, tuy nhiên ta vẫn thiếu một khía cạnh quan trọng: xác định nơi mà section sẽ xuất hiện trên theme. Phần tìm hiểu thêm một số bước tiếp cận khi include các sections ta sẽ để sau, bây giờ ta cấu hình cho phép section có thể add ở trong theme editor trên bất cứ page nào bằng cách khởi tạo presets.
 
 Presets là các cấu hình mặc định của sections, nằm trong `{% schema %}` tags. Ở ví dụ của chúng ta, presets trông như sau:
 
@@ -224,10 +224,10 @@ Như chúng ta đã thấy ở ví dụ custom text section, ta có thể biến
 
 ```liquid
 "presets": [
-{
-"name": "custom-text",
-"category": "Custom"
-}
+  {
+  "name": "custom-text",
+  "category": "Custom"
+  }
 ]
 ```
 
