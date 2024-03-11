@@ -5,7 +5,6 @@ title: Whitespace control
 # Whitespace control
 
 Trong Liquid, bạn có thể thêm kí tự `-` vào các tag mở đóng như `{{-` và `-}}` hoặc `{%-` và `-%}` để loại bỏ khoảng trống của giá trị hoặc biểu thức mà Liquid tạo ra.
-Kí tự này được gọi là hyphen.
 
 Thông thường, kể cả khi biểu thức không render giá trị nào cả trên một dòng, Liquid vẫn sẽ chừa ra khoảng trống cho dòng đó.
 
@@ -21,7 +20,7 @@ Chú ý khoảng trống nằm trên từ "tomato" sau khi render:
 tomato
 ```
 
-Bằng cách thêm một hyphen vào trong biểu thức, bạn có thể loại bỏ khoảng trống trên.
+Bằng cách thêm dấu `-` vào trong biểu thức, bạn có thể loại bỏ khoảng trống trên.
 
 ```liquid title="Input"
 {% assign my_variable = "tomato" -%}
