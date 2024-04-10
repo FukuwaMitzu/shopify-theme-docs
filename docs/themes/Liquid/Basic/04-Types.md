@@ -103,7 +103,7 @@ Adam
 Bạn không thể khởi tạo mảng trong Liquid.
 :::
 
-Tuy nhiên, bạn vẫn có thể sử dụng filter `split` để tách chuỗi lớn thành một mảng các chuỗi kí tự con.
+Tuy nhiên, bạn vẫn có thể sử dụng filter `split` để tách string thành một mảng các chuỗi kí tự con.
 
 ## EmptyDrop
 
