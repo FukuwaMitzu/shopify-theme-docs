@@ -7,6 +7,10 @@ title: Overview
 
 Trước khi bắt đầu quá trình phát triển app của bạn, bạn nên trước hết hiểu được Shopify apps làm những gì và chúng có thể hoạt động với Shopify bằng cách nào.
 
+<div class="video-wrapper">
+    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/PB9gwBgQIk0?si=BDp6W2kz2hOC4NRL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="true"></iframe>
+</div>
+
 ## Shopify app là gì?
 
 Shopify app cho phép mở rộng các chức năng hiện có của Shopify. Đa số các Shopify apps được xây dựng bởi các nhà phát triển bên thứ 3, không bởi Shopify.
