@@ -45,7 +45,7 @@ Bạn có thể truy cập các chức năng giới hạn của Liquid ở trong
 
 ### `config`
 
-Thư mục `config` chứa các [file cấu hình](https://shopify.dev/docs/themes/architecture/config) của một theme. Các file config cấu hình [settings](https://shopify.dev/docs/themes/architecture/settings) trong mục **Theme settings** của theme editor, cũng như lưu trữ thông tin cấu hình của chúng.
+Thư mục `config` chứa các [file cấu hình](https://shopify.dev/docs/themes/architecture/config) của một theme. Các file config làm nhiệm vụ thiết lập [settings](https://shopify.dev/docs/themes/architecture/settings) trong mục **Theme settings** của theme editor, cũng như lưu trữ thông tin cấu hình của chúng.
 
 Theme settings thiết lập các thông tin cấu hình tổng quan như color, font size, custom css,... và có thể truy cập thông qua [`settings` object](https://shopify.dev/docs/api/liquid/objects/settings).
 

@@ -23,6 +23,6 @@ Apps tích hợp với Shopify thông qua những cách sau:
 
 + Kết nối với Shopify APIs để đọc và ghi dữ liệu, thông qua nhập liệu hoặc webhook event notifications.
 + Mở rộng thêm các tính năng nằm trong các vị trí hiện có của Shopify admin hoặc Shopify Point of Sale (POS)
-+ Nâng cao cách mà các cửa hàng hiển thị thông tin cho khách hàng.
++ Nâng cao cơ chế mà các cửa hàng hiển thị thông tin cho khách hàng.
 
 ![Shopify App Overview](/img/shopify-app-overview-2.webp)

@@ -57,9 +57,7 @@ Các bước tạo theme:
 Các bước áp dụng template cho product page:
 
 1. Từ giao diện Shopify admin, đi đến `Products`.
-
 2. Chọn sản phẩm cần edit.
-
 3. Chọn template tại mục `Theme template`.
 
 ![Shopify Basic](/img/theme_template.png)
