@@ -32,7 +32,7 @@ JSON template không bao gồm các lệnh liquid hay các dòng lệnh markup �
 
 Một ví dụ đơn giản của template file `product.json` như sau:
 
-```js title="Templates/product.json"
+```json title="Templates/product.json"
 {
   "name": "Product",
   "sections": {
@@ -80,7 +80,7 @@ Những section thuộc loại này nên được thêm vào các page bởi mer
 
 Tuy nhiên, vẫn có khả năng hạn chế một section chỉ có thể hiển thị ở một số loại page nhất định bằng cách dùng thuộc tính [**templates**](https://shopify.dev/docs/themes/architecture/sections/section-schema#enabled_on) của mục **enabled_on** hoặc **disable_on** trong schema. Ví dụ, nếu như bạn muốn giới hạn một section chỉ có thể hiển thị ở product và collection page, bạn nên thêm dòng này trong `schema` tag:
 
-```js
+```json
 {
   "enabled_on": {
     "templates": ["product", "collection"],
@@ -194,7 +194,7 @@ Khi chúng ta nhìn vào nội dung khai báo section của các main page secti
 
 Bên cạnh `main` section, ta còn có thể thêm các section khác mà chúng cũng sẽ hiển thị mặc định trên page. Lấy một ví dụ ở file JSON template sau, ta thêm một product recommendations section trên page bằng cách thêm một object mới ngay dưới `main` section:
 
-```js
+```json
 {
   "name": "Product",
   "sections": {
