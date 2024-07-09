@@ -69,7 +69,7 @@ Hey Anonymous!
 Thực thi lệnh điều kiện dạng switch case thường thấy ở các ngôn ngữ lập trình khác.
 `case` đóng vai là một switch. `when` là các case.
 
-`when` tag có thể nhận nhiều giá trị cùng lúc. Khi xử lí điều kiện, biểu thức sẽ tìm xem trong số các giá trị được cung cấp, có giá trị nào trùng với giá trị được so sánh hay không. Nếu có sẽ thực thi khối lệnh tương ứng. Bạn có thể sử dụng `,` hoặc `or` để ngăn cách các giá trị.
+`when` có thể nhận nhiều giá trị cùng lúc. Khi xử lí điều kiện, biểu thức sẽ tìm xem trong số các giá trị được cung cấp, có giá trị nào trùng với giá trị được so sánh hay không. Nếu có sẽ thực thi khối lệnh tương ứng. Bạn có thể sử dụng `,` hoặc `or` để ngăn cách các giá trị.
 
 Ngoài ra, bạn cũng có thể tùy chọn bổ sung `else` để thực thi lệnh khi không thỏa mãn bất cứ điều kiện nào.
 

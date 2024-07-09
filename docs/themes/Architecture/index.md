@@ -8,11 +8,11 @@ description: Tổng quan về kiến trúc Shopify theme
 
 ## Nội dung
 
-Theme files được chia làm 3 mục:
+Theme files được chia làm 3 loại:
 
 + [**Markup and features**](https://shopify.dev/docs/themes/architecture#markup-and-features) - Các file này kiểm soát layout và chức năng của một theme. Bằng cách sử dụng Liquid để tạo ra nội dung HTML cho các page của store.
 
-+ [**Tài nguyên bổ sung**](https://shopify.dev/docs/themes/architecture#supporting-assets) - Bao gồm các css file, JavaScript, locales,...bất cứ những file hỗ trợ cho giao diện và chức năng của theme.
++ [**Supporting assets**](https://shopify.dev/docs/themes/architecture#supporting-assets) - Các tài nguyên bổ sung bao gồm các css file, JavaScript, locales,...bất cứ những file hỗ trợ cho giao diện và chức năng của theme.
 
 + [**Config files**](https://shopify.dev/docs/themes/architecture#allowing-for-customization-of-theme-components) - Bao gồm các JSON file để lưu thông tin cấu hình có thể sử dụng để tùy biến bởi merchant thông qua [theme editor](https://shopify.dev/docs/themes/tools/online-editor).
 
@@ -53,13 +53,13 @@ Theme settings thiết lập các thông tin cấu hình tổng quan như color,
 
 Thư mục `layout` chứa các [file layout](https://shopify.dev/docs/themes/architecture/layouts) của một theme, là các file chứa các thông tin [template](https://shopify.dev/docs/themes/architecture#templates) sẽ được render.
 
-Layouts là các file Liquid cho phép bạn include các content xuất hiện trên một vị trí có mặt ở tất cả các trang web. Vì thế bạn có thể thiết lập thông tin thẻ `<head>`, hay các nhóm sections cho header và footer ở layout.
+Layouts là các file Liquid cho phép bạn include các content xuất hiện trên một vị trí có mặt ở tất cả các trang web. Bạn có thể thiết lập thông tin thẻ `<head>`, hay các nhóm sections cho header và footer ở layout.
 
 File `theme.liquid` phải có sẵn trong thư mục này trước khi upload lên Shopify.
 
 ### `locales`
 
-Thư mục `locales` chứa các [file dịch ngữ](https://shopify.dev/docs/themes/architecture/locales) của một theme, được sử dụng để cung cấp các nội dung đã được dịch sẵn. Các file locale cho phép merchant có thể tùy biến để đem lại trải nghiệm gần gũi hơn với các khách hàng thông qua một loạt các nội dung đã được dịch sang ngôn ngữ của họ.
+Thư mục `locales` chứa các [file dịch thuật](https://shopify.dev/docs/themes/architecture/locales) của một theme, được sử dụng để cung cấp các nội dung đã được dịch sẵn. Các file locale cho phép merchant có thể tùy biến để đem lại trải nghiệm gần gũi hơn với các khách hàng thông qua một loạt các nội dung đã được dịch sang ngôn ngữ của từng đối tượng khách hàng.
 
 ### `sections`
 
@@ -67,16 +67,16 @@ Thư mục `sections` chứa các [section](https://shopify.dev/docs/themes/arch
 
 Sections là các file Liquid cho phép khởi tạo các nội dung có thể tái sử dụng và tùy biến bởi merchants. Họ - các merchant có thể include các block cho phép thêm, sửa, xóa hoặc sắp xếp vị trí nội dung trong một section.
 
-Sections group là các JSON containers cho phép merchant thêm, sửa, xóa các section nằm trên một vùng nằm trong layout như header và footer.
+Sections group là các JSON containers cho phép merchant thêm, sửa, xóa các section nằm trong một vùng trên layout như header và footer.
 
 ### `snippets`
 
-Thư mục `snippets` chứa các file Liquid chứa các thành phần tái sử dụng nhỏ hơn trong code. Bạn có thể tham chiếu các snippets này trong theme thông qua [render](https://shopify.dev/docs/api/liquid/tags/render) tag của Liquid.
+Thư mục `snippets` chứa các file Liquid có template là các giao diện dạng thành phần (có thể tái sử dụng). Bạn có thể tham chiếu các snippets này trong theme thông qua tag [render](https://shopify.dev/docs/api/liquid/tags/render) của Liquid.
 
 ### `templates`
 
-Thư mục `templates` chứa nội dung các [file template](https://shopify.dev/docs/themes/architecture/templates) của một theme, quyết định những nội dung nào sẽ hiển thị trên một page.
+Thư mục `templates` chứa các [file template](https://shopify.dev/docs/themes/architecture/templates) của một theme, quyết định những nội dung nào sẽ hiển thị trên một page.
 
-Thư mục templates/customers chứa các file template tập trung vào thông tin người dùng như đăng nhập, my account,...
+VD: Thư mục templates/customers chứa các file template tập trung vào thông tin người dùng như đăng nhập, my account,...
 
-Bạn có thể sử dụng template để cung cấp thông tin chức năng cho một page. Ví dụ, bạn có thêm mục product recommendations bổ sung cho một product của product page, hoặc thêm comment form cho một bài viết. Bạn còn có thể [tạo ra nhiều phiên bản khác nhau của cùng một template](https://shopify.dev/docs/themes/architecture/templates#alternate-templates) để áp dụng cho các trường hợp thực tế nhất định.
+Template được sử dụng để cung cấp thông tin chức năng cho một page. Bạn có thể tạo template product recommendations cho một product của product page, hoặc thêm comment form cho một bài viết. Bạn còn có thể [tạo ra nhiều phiên bản khác nhau của cùng một template](https://shopify.dev/docs/themes/architecture/templates#alternate-templates) để áp dụng cho các trường hợp đặc biệt nhất định.
